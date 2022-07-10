@@ -9,13 +9,12 @@ let openBdtdButton = document.getElementById('openBDTD');
 let bdtdTextArea = document.getElementById('BDTDContent');
 let risTextArea  = document.getElementById('RisContent');
 // let downloadButton = document.getElementById("downloadRIS")
+//downloadButton.onclick = downloadRIS;
 
 openBdtdButton.onchange = async function openBdtdClick(event) {
     bdtdTextArea.value = await loadFileAsText(event.target.files[0]);
     convert();
 }
-
-downloadButton.onclick = downloadRIS;
 
 function downloadRIS() {
     saveStringAsText(risTextArea.value, "BDTD exportado.ris")
