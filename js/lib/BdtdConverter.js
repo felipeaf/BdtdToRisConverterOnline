@@ -12,7 +12,7 @@ export default class BdtdConverter {
     }
 
     getLanguage(str) {
-        let result =  languagesMap[str];
+        let result =  languagesMap[str.toLowerCase()];
         return nvl(result,str);
     }
 
