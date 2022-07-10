@@ -29,6 +29,7 @@ async function loadFileAsText(file) {
 }
 
 async function convert() {
+    risTextArea.value = '';
     let input = bdtdTextArea.value;
     let outputStreamCb = line => risTextArea.value += line + '\r\n';
     convertBdtdToRis(input, outputStreamCb, downloadRIS);
