@@ -12,8 +12,18 @@ let risTextArea  = document.getElementById('RisContent');
 //downloadButton.onclick = downloadRIS;
 
 openBdtdButton.onchange = async function openBdtdClick(event) {
-    bdtdTextArea.value = await loadFileAsText(event.target.files[0]);
-    convert();
+    try {    
+        bdtdTextArea.value = await loadFileAsText(event.target.files[0]);
+    } catch(e) {
+        alert("Erro lendo arquivo");
+        console.error(e);
+    }
+    try {
+        convert();
+    } catch(e) {
+        alert("Erro convertendo arquivo. Verifique se o arquivo selecionado é realmente um arquivo JSON de resultado de busca da BDTD.");
+        console.error(e);
+    }
 }
 
 function downloadRIS() {
@@ -28,7 +38,7 @@ async function loadFileAsText(file) {
     });
 }
 
-async function convert() {
+function convert() {
     risTextArea.value = '';
     let input = bdtdTextArea.value;
     let outputStreamCb = line => risTextArea.value += line + '\r\n';
